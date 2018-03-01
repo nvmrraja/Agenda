@@ -1,4 +1,39 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Agenda" x:Class="Agenda.AgendaPage">
-	<Label Text="Welcome to Xamarin Forms!" VerticalOptions="Center" HorizontalOptions="Center" />
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:Agenda" x:Class="Agenda.AgendaPage"
+    Title="Visits">
+
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem  Priority="1" CommandParameter="Xamarin Rocks!" Text="Settings" Icon="icon_settings.png" Order="Primary" />         
+    </TabbedPage.ToolbarItems>
+
+    <ListView ItemTapped="OnItemTapped" 
+        SeparatorVisibility="None" x:Name="newsListView" HasUnevenRows="True" ItemsSource="{Binding ClientVisit}" Margin="10">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto"/>
+                         </Grid.RowDefinitions>    
+
+                            
+
+                        <Label FontAttributes="{Binding Description}" Style="{DynamicResource ListTitleStyle}" Grid.Column="1" Grid.Row="0" Text="{Binding Visit}"/>
+                        <Label FontAttributes="{Binding Description}" Style="{DynamicResource ListDescriptionStyle}" Grid.Column="1" Grid.Row="1" Text="{Binding Date}"/>
+
+
+
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>

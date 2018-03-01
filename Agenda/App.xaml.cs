@@ -4,11 +4,15 @@ namespace Agenda
 {
     public partial class App : Application
     {
+        public static ViewModels.MainViewModel ViewModel { get; set; }
+        public static INavigation MainNavigation { get; set; }
+
         public App()
         {
             InitializeComponent();
 
-            MainPage = new AgendaPage();
+            MainPage = new NavigationPage(new Agenda.AgendaPage());
+            ViewModel = new ViewModels.MainViewModel();
         }
 
         protected override void OnStart()
